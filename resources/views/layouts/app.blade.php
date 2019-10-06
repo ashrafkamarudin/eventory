@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> {{ config('app.name', 'Laravel') }} @yield('title') </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+
+    @include('partials.head')
+
+  </head>
+  <body>
+
+    <div class='thetop'></div>
+
+    @include('partials.header')
+
+    <main class="container">
+      @yield('content')
+    </main>
+
+    <div class='scrolltop'>
+        <div class='scroll icon'><i class="fa fa-4x fa-angle-up"></i></div>
+    </div>
+
+    @include('partials.footer')
+    @include('partials.js')
+    @yield('script')
+
+  </body>
+</html>
+
+<script type="text/javascript">
+$(window).scroll(function() {
+    if ($(this).scrollTop() > 50 ) {
+        $('.scrolltop:hidden').stop(true, true).fadeIn();
+    } else {
+        $('.scrolltop').stop(true, true).fadeOut();
+    }
+});
+
+$(function(){$(".scroll").click(function(){$("html,body").animate({scrollTop:$(".thetop").offset().top},"1000");return false})});
+
+</script>
